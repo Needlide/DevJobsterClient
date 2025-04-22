@@ -1,0 +1,129 @@
+.title {
+  width: 370px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ceb0b0;
+  color: #212121;
+  border-radius: 15px;
+  margin-top: 50px;
+}
+
+.content-body {
+  width: 1150px;
+  height: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  background-color: #675c6b;
+  margin-top: 65px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: #787780;
+  border-radius: 15px;
+  width: 480px;
+  height: 330px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email-block {
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+}
+
+.email-field {
+  width: 352px;
+  height: 76px;
+}
+
+.email-field-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.password-block {
+  display: flex;
+  gap: 20px;
+}
+
+.password-field {
+  width: 352px;
+  height: 76px;
+}
+
+.password-field-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.login-button {
+  width: 352px;
+  height: 45px;
+  border-radius: 100px;
+  margin-top: 7px;
+}
+
+.help-block {
+  background-color: #21212136;
+  margin-top: 26px;
+  width: 352px;
+  height: 69px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
+  align-items: center;
+  justify-content: center;
+}
+
+.help-block-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.login-with-block {
+  background-color: #4b444b;
+  margin-top: 45px;
+  width: 420px;
+  height: 200px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-with-title {
+  background-color: #6f6781;
+  color: #fff;
+  width: 375px;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.login-with-list {
+  display: flex;
+  flex-direction: row;
+  gap: 41px;
+  list-style: none;
+  margin-left: -41px;
+  margin-top: 33px;
+}
+
+.login-with-list-icon {
+  width: 60px;
+  height: 60px;
+}
