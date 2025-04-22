@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+//@use "@angular/material/m3" as m3;
+@import "../node_modules/modern-normalize/modern-normalize.css";
+
+@include mat.core();
+
+$angular-material-3-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$violet-palette,
+      tertiary: mat.$rose-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  @include mat.all-component-themes($angular-material-3-theme);
+}
+
+.container {
+  width: 1440px;
+  height: 100%;
+  background-color: #464159;
+
+  &--centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+html {
+  @include mat.theme(
+    (
+      color: mat.$violet-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+html,
+body {
+  background-color: #464159;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
