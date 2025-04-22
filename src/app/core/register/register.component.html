@@ -1,0 +1,117 @@
+<div class="container--centered">
+  <div class="title">
+    <h1>Register</h1>
+  </div>
+
+  <div class="content-body">
+    <div class="login-form">
+      <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+        <div class="email-block">
+          <img
+            class="email-field-icon"
+            src="/assets/mail.svg"
+            alt="Mail icon"
+          />
+          <mat-form-field appearance="fill" class="email-field">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              placeholder="example@mail.com"
+              [(ngModel)]="email"
+              name="email"
+              required
+              email
+              #emailInput="ngModel"
+            />
+            <button
+              *ngIf="email"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="email = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="emailInput.invalid"
+              >Please enter a valid email</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="password-block">
+          <img
+            class="password-field-icon"
+            src="/assets/lock.svg"
+            alt="Lock icon"
+          />
+          <mat-form-field appearance="fill" class="password-field">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Enter your password"
+              [(ngModel)]="password"
+              name="password"
+              required
+              #passwordInput="ngModel"
+            />
+            <button
+              *ngIf="password"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="password = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error
+              *ngIf="
+                passwordInput.invalid &&
+                (passwordInput.dirty || passwordInput.touched)
+              "
+            >
+              Password is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+      <button
+        class="login-button"
+        mat-raised-button
+        color="primary"
+        (click)="onRegister()"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+      <div class="help-block">
+        <a class="help-block-link" href="#">Already registered?</a>
+      </div>
+    </div>
+    <div class="login-with-block">
+      <div class="login-with-title">Register with</div>
+      <ul class="login-with-list">
+        <li class="login-with-list-icon">
+          <a href="#">
+            <img src="/assets/google.svg" alt="Google logo" />
+          </a>
+        </li>
+        <li class="login-with-list-icon">
+          <a href="#">
+            <img src="/assets/github.svg" alt="GitHub logo" />
+          </a>
+        </li>
+        <li class="login-with-list-icon">
+          <a href="#">
+            <img src="/assets/linkedin.svg" alt="LinkedIn logo" />
+          </a>
+        </li>
+        <li class="login-with-list-icon">
+          <a href="#">
+            <img src="/assets/facebook.svg" alt="Facebook logo" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
