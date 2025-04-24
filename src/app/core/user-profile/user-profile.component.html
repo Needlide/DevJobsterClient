@@ -1,0 +1,135 @@
+<app-header />
+
+<div class="container--centered">
+  <div class="content-body">
+    <ul class="info-panel">
+      <li>Role</li>
+      <li>Skills</li>
+      <li>Years of experience</li>
+      <li>Location</li>
+      <li>English level</li>
+    </ul>
+
+    <div class="action-panel">
+      <mat-form-field appearance="fill" class="role-field">
+        <mat-label>Role</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="e.g. Fullstack Developer"
+          [(ngModel)]="role"
+          name="role"
+          required
+          role
+          #roleInput="ngModel"
+        />
+        <button
+          *ngIf="role"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="role = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="roleInput.invalid && (roleInput.dirty || roleInput.touched)"
+          >Role is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="skills-field">
+        <mat-label>Skills</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="React, Javascript, Next.js, node.js"
+          name="skills"
+          [(ngModel)]="skills"
+          #skillsInput="ngModel"
+          required
+          validateCommaSeparated
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          [ngModel]="skills"
+        />
+        <button
+          *ngIf="skills"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="skills = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <mat-error
+          *ngIf="skillsInput?.errors?.['required'] && (skillsInput.dirty || skillsInput.touched)"
+        >
+          Skills are required
+        </mat-error>
+
+        <mat-error
+          *ngIf="skillsInput?.errors?.['commaSeparated'] && (skillsInput.dirty || skillsInput.touched)"
+        >
+          Skills must be divided with commas
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="experience-field">
+        <input
+          matInput
+          type="number"
+          placeholder="1.5"
+          name="experience"
+          [(ngModel)]="yearsOfExperience"
+          #experienceInput="ngModel"
+          required
+          experience
+        />
+        <mat-error
+          *ngIf="experienceInput.errors?.['required'] && (experienceInput.dirty || experienceInput.touched)"
+        >
+          Experience is required
+        </mat-error>
+        <mat-error
+          *ngIf="experienceInput.errors?.['experienceInvalid'] && (experienceInput.dirty || experienceInput.touched)"
+        >
+          Experience must be between 0 and 99 years
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="location-dropdown">
+        <mat-label>Location</mat-label>
+        <mat-select [(ngModel)]="location" name="country">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-radio-group
+        [(ngModel)]="englishLevel"
+        name="englishLevel"
+        class="english-level"
+      >
+        <mat-radio-button
+          *ngFor="let level of englishLevels"
+          [value]="level"
+          class="radio-button"
+        >
+          {{ level }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="button-column">
+      <button
+        class="edit-confirm-button"
+        mat-raised-button
+        color="primary"
+        (click)="onClick()"
+      >
+        {{ buttonText }}
+      </button>
+    </div>
+  </div>
+</div>
