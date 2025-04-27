@@ -1,0 +1,161 @@
+<app-header />
+<div class="container--centered">
+  <div class="content-body">
+    <div class="left-panel">
+      <mat-list class="job-list">
+        <mat-list-item
+          class="job-list-item"
+          *ngFor="let vacancy of vacancies"
+          [class.selected]="vacancy === selectedVacancy"
+          (click)="onVacancySelect(vacancy)"
+        >
+          <span class="job-list-text" matListItemTitle>
+            {{ vacancy.title }}
+          </span>
+        </mat-list-item>
+      </mat-list>
+      <div class="filter-container">
+        <div class="filter-header" (click)="toggleFilter()">
+          <mat-icon>{{
+            isExpanded ? "keyboard_arrow_down" : "keyboard_arrow_up"
+          }}</mat-icon>
+          <span>Filters</span>
+        </div>
+        <div
+          class="filter-content"
+          [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'"
+        >
+          <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Search by title</mat-label>
+            <input matInput placeholder="e.g. Frontend Developer" />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+
+          <div class="filter-row">
+            <mat-form-field
+              class="filter-experience-level"
+              appearance="outline"
+            >
+              <mat-label>Experience Level</mat-label>
+              <mat-select>
+                <mat-option
+                  *ngFor="let level of experienceLevels"
+                  [value]="level"
+                >
+                  {{ level }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="filter-job-type" appearance="outline">
+              <mat-label>Job Type</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let type of jobTypes" [value]="type">
+                  {{ type }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="filter-location">
+            <mat-label>Location</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let location of locations" [value]="location">
+                {{ location }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="salary-range">
+            <p>Salary Range ($)</p>
+            <mat-slider min="0" max="200000" step="50" class="full-width">
+              <input
+                matSliderStartThumb
+                [(ngModel)]="salaryRange[0]"
+                [min]="minSalary"
+                [max]="maxSalary"
+              />
+              <input
+                matSliderEndThumb
+                [(ngModel)]="salaryRange[1]"
+                [min]="minSalary"
+                [max]="maxSalary"
+              />
+            </mat-slider>
+
+            <div class="salary-labels">
+              <input
+                matInput
+                type="number"
+                step="50"
+                [(ngModel)]="salaryRange[0]"
+                [min]="minSalary"
+                [max]="salaryRange[1]"
+                (ngModelChange)="onSalaryInputChange(0)"
+              />
+              <input
+                matInput
+                type="number"
+                step="50"
+                [(ngModel)]="salaryRange[1]"
+                [min]="salaryRange[0]"
+                [max]="maxSalary"
+                (ngModelChange)="onSalaryInputChange(1)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-card class="right-panel">
+      <mat-card-header class="right-panel-upper-box">
+        <div class="title-box">
+          <mat-card-title>{{
+            selectedVacancy != undefined ? selectedVacancy.title : ""
+          }}</mat-card-title>
+          <ul class="short-info">
+            <li>
+              {{ selectedVacancy != undefined ? selectedVacancy.location : "" }}
+            </li>
+            <li>
+              {{
+                selectedVacancy != undefined ? selectedVacancy.typeOfJob : ""
+              }}
+            </li>
+          </ul>
+        </div>
+        <button
+          mat-raised-button
+          color="tertiary"
+          class="apply-button-top"
+          aria-label="Apply"
+          (click)="apply()"
+        >
+          Apply
+        </button>
+      </mat-card-header>
+      <mat-card-content class="right-panel-lower-box">
+        <h3>Job Description</h3>
+        <div
+          class="description"
+          [innerHTML]="
+            selectedVacancy != undefined ? selectedVacancy.description : ''
+          "
+        ></div>
+
+        <h3>Requirements</h3>
+        <div
+          class="requirements"
+          [innerHTML]="
+            selectedVacancy != undefined ? selectedVacancy.requirements : ''
+          "
+        ></div>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-raised-button color="primary" (click)="apply()">
+          Apply
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
