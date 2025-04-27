@@ -46,15 +46,17 @@
 .profile-button {
   position: absolute;
   right: 15px;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   padding: 0;
   border-radius: 50%;
   overflow: hidden;
 
   mat-icon {
-    font-size: 24px;
+    height: 36px;
+    width: 36px;
+    font-size: 36px;
   }
 }
