@@ -1,0 +1,45 @@
+<app-header />
+<div class="container--centered">
+  <div class="content-body">
+    <div class="left-panel">
+      <div class="title-box">
+        <h2>Registered accounts</h2>
+      </div>
+
+      <mat-list class="account-list">
+        <mat-list-item
+          class="account-list-item"
+          *ngFor="let registeredAccount of MOCK_REGISTERED_ACCOUNTS"
+          (click)="onAccountClick(registeredAccount.userId)"
+        >
+          <span matListItemTitle class="account-list-text"
+            >{{ registeredAccount.firstName }}
+            {{ registeredAccount.lastName }}</span
+          >
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="right-panel">
+      <div class="title-box">
+        <h2>Reports</h2>
+      </div>
+      <mat-list class="report-list">
+        <mat-list-item
+          class="report-list-item"
+          *ngFor="let report of MOCK_REPORTS"
+          (click)="onReportClick(report)"
+        >
+          <span matListItemTitle class="report-list-text">
+            {{ report.title }}
+          </span>
+          <span matListItemLine class="report-list-text">
+            {{ report.body }}
+          </span>
+          <span matListItemLine class="report-list-text">
+            {{ report.createdAt }}
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>
