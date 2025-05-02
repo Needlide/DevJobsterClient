@@ -106,18 +106,6 @@ export class AdminDashboardComponent {
 
   onAccountClick(userId: string) {
     this.router.navigate(['/account-details', userId]);
-
-    //   ngOnInit(): void {
-    //   const userId = this.route.snapshot.paramMap.get('userId');
-    //   if (userId) {
-    //     this.accountService.getAccountById(userId).subscribe({
-    //       next: (data) => (this.account = data),
-    //       error: () => {
-    //         // handle error or redirect
-    //       }
-    //     });
-    //   }
-    // }
   }
 
   onReportClick(report: Report) {}
