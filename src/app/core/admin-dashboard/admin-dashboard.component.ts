@@ -108,5 +108,7 @@ export class AdminDashboardComponent {
     this.router.navigate(['/account-details', userId]);
   }
 
-  onReportClick(report: Report) {}
+  onReportClick(report: Report) {
+    this.router.navigate(['/report-detail'], { state: { report } });
+  }
 }

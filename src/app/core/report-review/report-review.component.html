@@ -1,0 +1,31 @@
+<div class="container--centered">
+  <div class="content-body">
+    <mat-toolbar class="card-title">
+      <span>Report Review</span>
+    </mat-toolbar>
+
+    <div *ngIf="report" class="report-container">
+      <mat-card class="report-card">
+        <mat-card-header>
+          <mat-card-title>{{ report.title }}</mat-card-title>
+          <mat-card-subtitle>{{
+            report.createdAt | date : "medium"
+          }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+          <p>{{ report.body }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card *ngIf="error" class="error-card">
+      <mat-card-title>Error</mat-card-title>
+      <mat-card-content>
+        <p>{{ error }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
