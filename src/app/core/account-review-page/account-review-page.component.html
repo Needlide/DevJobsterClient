@@ -1,0 +1,49 @@
+<app-header />
+<div class="container--centered">
+  <div class="content-body">
+    <mat-card *ngIf="!error && user" class="user-card">
+      <mat-card-title>User Profile Review</mat-card-title>
+      <mat-card-content>
+        <div class="user-details">
+          <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+          <p><strong>Role:</strong> {{ user.role }}</p>
+          <p><strong>Location:</strong> {{ user.location }}</p>
+          <p>
+            <strong>Years of Experience:</strong> {{ user.yearsOfExperience }}
+          </p>
+          <p><strong>English Level:</strong> {{ user.englishLevel }}</p>
+          <p><strong>Skills:</strong></p>
+          <mat-card class="skills-box">
+            {{ user.skills || "No skills provided." }}
+          </mat-card>
+        </div>
+
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="verifyUser()">
+            ✔ Verify
+          </button>
+          <button mat-raised-button color="warn" (click)="toggleDecline()">
+            ✖ Cancel
+          </button>
+        </div>
+
+        <div *ngIf="showDeclineReason" class="decline-form">
+          <mat-form-field appearance="fill" class="reason-field">
+            <mat-label>Reason for Decline</mat-label>
+            <textarea matInput [(ngModel)]="declineReason" rows="4"></textarea>
+          </mat-form-field>
+          <button mat-flat-button color="warn" (click)="submitDecline()">
+            Submit Decline
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="error" class="error-card">
+      <mat-card-title>Error</mat-card-title>
+      <mat-card-content>
+        <p>{{ error }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
