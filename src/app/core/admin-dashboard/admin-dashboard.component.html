@@ -36,7 +36,7 @@
             {{ report.body }}
           </span>
           <span matListItemLine class="report-list-text">
-            {{ report.createdAt }}
+            {{ report.createdAt | date : "medium" }}
           </span>
         </mat-list-item>
       </mat-list>
