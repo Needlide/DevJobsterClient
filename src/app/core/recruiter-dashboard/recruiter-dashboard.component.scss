@@ -1,0 +1,145 @@
+.content-body {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 40px;
+  background-color: #675c6b;
+  border-radius: 15px;
+  padding: 10px;
+  width: 1350px;
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.title-box {
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ceb0b0;
+  color: #212121;
+}
+
+.vacancy-list {
+  border-radius: 15px;
+  background-color: #ecdcff;
+}
+
+.vacancy-list-item {
+  border-top: 1px solid #b38ddf;
+}
+
+.vacancy-list-item:last-child {
+  border-bottom: 1px solid #b38ddf;
+}
+
+.vacancy-list-item:hover {
+  color: #212121;
+  background-color: #b38ddf;
+}
+
+.vacancy-list-text {
+  color: #212121;
+}
+
+.selected {
+  background-color: #f9e0fa;
+}
+
+.right-panel {
+  height: 100%;
+  flex: 2;
+  overflow-y: auto;
+  background-color: #787780;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+}
+
+.right-panel-upper-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.title-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.short-info {
+  width: fit-content;
+  height: 32px;
+  border-radius: 15px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 17px;
+  background-color: #fff;
+  padding: 0 10px;
+  margin: 0px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.short-info li {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+
+.right-panel-lower-box {
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  width: 100%;
+  padding: 20px;
+}
+
+.description {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+ul {
+  padding-left: 24px;
+  margin-bottom: 24px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+.card-actions {
+  padding: 0px 16px;
+  width: fit-content;
+
+  button {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+}

@@ -1,0 +1,71 @@
+<app-header />
+<div class="container--centered">
+  <div class="content-body">
+    <div class="left-panel">
+      <div class="title-box">
+        <h2>Active vacancies</h2>
+      </div>
+
+      <mat-list class="vacancy-list">
+        <mat-list-item
+          class="vacancy-list-item"
+          *ngFor="let vacancy of vacancies"
+          [class.selected]="vacancy === selectedVacancy"
+          (click)="onVacancySelect(vacancy)"
+        >
+          <span class="vacancy-list-text" matListItemTitle>
+            {{ vacancy.title }}
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <mat-card *ngIf="selectedVacancy" class="right-panel">
+      <mat-card-header class="right-panel-upper-box">
+        <div class="title-box">
+          <mat-card-title>
+            {{ selectedVacancy.title }}
+          </mat-card-title>
+          <ul class="short-info">
+            <li>
+              {{ selectedVacancy != undefined ? selectedVacancy.location : "" }}
+            </li>
+            <li>
+              {{
+                selectedVacancy != undefined ? selectedVacancy.typeOfJob : ""
+              }}
+            </li>
+          </ul>
+        </div>
+      </mat-card-header>
+      <mat-card-content *ngIf="selectedVacancy" class="right-panel-lower-box">
+        <h3>Job Description</h3>
+        <div
+          class="description"
+          [innerHTML]="
+            selectedVacancy != undefined ? selectedVacancy.description : ''
+          "
+        ></div>
+
+        <h3>Requirements</h3>
+        <div
+          class="requirements"
+          [innerHTML]="
+            selectedVacancy != undefined ? selectedVacancy.requirements : ''
+          "
+        ></div>
+      </mat-card-content>
+      <mat-card-actions *ngIf="selectedVacancy" class="card-actions">
+        <button mat-raised-button color="primary" (click)="update()">
+          Update
+        </button>
+        <button mat-raised-button color="tertiary" (click)="applicants()">
+          View applicants
+        </button>
+        <button mat-raised-button color="tertiary" (click)="delete()">
+          Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
