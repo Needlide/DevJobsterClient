@@ -1,0 +1,90 @@
+.content-body {
+  width: 1100px;
+  height: 680px;
+  background-color: #675c6b;
+  border-radius: 15px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.info-panel {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  width: 220px;
+  height: 592px;
+  margin-left: 40px;
+  margin-top: 36px;
+  background-color: #787780;
+  border-radius: 15px;
+}
+
+.info-panel > li {
+  margin-top: 25px;
+}
+
+.info-panel > li:nth-child(2) {
+  margin-top: 55px;
+}
+
+.info-panel > li:nth-child(3) {
+  margin-top: 55px;
+}
+
+.info-panel > li:nth-child(4) {
+  margin-top: 285px;
+}
+
+.info-panel > li:nth-child(5) {
+  margin-top: 55px;
+}
+
+.action-panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 36px;
+}
+
+.first-name-field {
+  width: 600px;
+  height: 76px;
+}
+
+.last-name-field {
+  width: 600px;
+  height: 76px;
+}
+
+.notes-field {
+  width: 600px;
+  height: 304px;
+}
+
+.website-field {
+  width: 600px;
+  height: 76px;
+}
+
+.phone-number-field {
+  width: 250px;
+  height: 76px;
+}
+
+.button-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  padding-left: 55px;
+}
+
+.edit-confirm-button {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
