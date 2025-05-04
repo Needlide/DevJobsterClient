@@ -1,0 +1,28 @@
+<div class="container--centered">
+  <div class="content-body">
+    <div class="title-container">
+      <h2>Your Applications</h2>
+    </div>
+
+    <mat-card *ngFor="let vacancy of vacancies" class="vacancy-card">
+      <mat-card-header>
+        <mat-card-title>{{ vacancy.title }}</mat-card-title>
+        <mat-card-subtitle
+          >{{ vacancy.typeOfJob }} • {{ vacancy.location }},
+          {{ vacancy.country }}</mat-card-subtitle
+        >
+      </mat-card-header>
+
+      <mat-card-actions>
+        <a mat-button [href]="vacancy.companyWebsite" target="_blank"
+          >VISIT COMPANY</a
+        >
+        <button mat-button color="primary">VIEW DETAILS</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <div *ngIf="vacancies.length === 0" class="no-vacancies">
+      <p>You haven't applied to any vacancies yet.</p>
+    </div>
+  </div>
+</div>
