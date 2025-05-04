@@ -237,9 +237,8 @@ export class UserDashboardComponent {
   maxSalary = 999999;
   salaryRange = [0, 200000];
 
-  onVacancySelect(vacancy: any): void {
+  onVacancySelect(vacancy: VacancyView): void {
     this.selectedVacancy = vacancy;
-    console.log('Selected vacancy:', vacancy);
   }
 
   onSalaryInputChange(index: number) {
