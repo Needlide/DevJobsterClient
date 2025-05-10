@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/internal/Observable';
 import { UserUpdate } from '../../models/user/user-update.model';
 import { LoginRegisterModel } from '../../models/login-register.model';
 import { UserAuthentication } from '../../models/user-authentication.model';
-import { ChatView } from '../../models/chat-view.model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,9 +43,5 @@ export class UserService {
     return this.httpClient.get<UserProfileView[]>(
       `${this.apiUrl}/my-applications`
     );
-  }
-
-  getUserChats(): Observable<ChatView[]> {
-    return this.httpClient.get<ChatView[]>(`${this.apiUrl}/my-chats`);
   }
 }
