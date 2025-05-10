@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Report } from '../../models/report.model';
+import { ReportView } from '../../models/report-view.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +19,7 @@ import { HeaderComponent } from '../header/header.component';
   styleUrl: './report-review.component.scss',
 })
 export class ReportReviewComponent implements OnInit {
-  report: Report | undefined;
+  report: ReportView | undefined;
   error: string = '';
 
   constructor() {}
