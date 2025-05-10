@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../environments/environment.development';
+import { LoginRegisterModel } from '../models/login-register.model';
+import { Observable } from 'rxjs/internal/Observable';
 
 interface TokenPayload {
   exp: number;
@@ -14,12 +17,12 @@ interface TokenPayload {
 })
 export class AuthService {
   private tokenKey = 'auth_token';
-  private apiUrl = 'http://127.0.0.1:5068/api';
+  private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
-  login(credentials: { email: string; password: string }) {
-    return this.http.post<{ token: string }>(
+  login(credentials: LoginRegisterModel): Observable<{ token: string }> {
+    return this.httpClient.post<{ token: string }>(
       `${this.apiUrl}/auth/login`,
       credentials
     );
