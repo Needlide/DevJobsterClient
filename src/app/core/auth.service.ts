@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../environments/environment.development';
-import { LoginRegisterModel } from '../models/login-register.model';
+import { LoginRegisterModel } from '../models/auth/login-register.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 interface TokenPayload {

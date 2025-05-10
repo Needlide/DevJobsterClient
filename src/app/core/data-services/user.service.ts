@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { UserProfileView } from '../../models/user/user-profile-view.model';
 import { Observable } from 'rxjs/internal/Observable';
 import { UserUpdate } from '../../models/user/user-update.model';
-import { LoginRegisterModel } from '../../models/login-register.model';
-import { UserAuthentication } from '../../models/user-authentication.model';
+import { LoginRegisterModel } from '../../models/auth/login-register.model';
+import { UserAuthentication } from '../../models/auth/user-authentication.model';
 
 @Injectable({
   providedIn: 'root',

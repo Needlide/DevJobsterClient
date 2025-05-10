@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { RegisteredAccountShortView } from '../../models/registered-account.model';
-import { ReportView } from '../../models/report-view.model';
-import { AdminView } from '../../models/admin-view.model';
-import { LogView } from '../../models/log-view.model';
-import { RegisteredAccountUpdatedStatus } from '../../models/registered-model-updated-status.model';
+import { RegisteredAccountShortView } from '../../models/registered-account/registered-account.model';
+import { ReportView } from '../../models/admin/report-view.model';
+import { AdminView } from '../../models/admin/admin-view.model';
+import { LogView } from '../../models/admin/log-view.model';
+import { RegisteredAccountUpdatedStatus } from '../../models/registered-account/registered-model-updated-status.model';
 
 @Injectable({
   providedIn: 'root',
