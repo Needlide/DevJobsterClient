@@ -9,7 +9,7 @@
       <mat-list class="account-list">
         <mat-list-item
           class="account-list-item"
-          *ngFor="let registeredAccount of MOCK_REGISTERED_ACCOUNTS"
+          *ngFor="let registeredAccount of registeredAccounts"
           (click)="onAccountClick(registeredAccount.userId)"
         >
           <span matListItemTitle class="account-list-text"
@@ -26,7 +26,7 @@
       <mat-list class="report-list">
         <mat-list-item
           class="report-list-item"
-          *ngFor="let report of MOCK_REPORTS"
+          *ngFor="let report of reports"
           (click)="onReportClick(report)"
         >
           <span matListItemTitle class="report-list-text">
