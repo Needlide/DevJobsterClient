@@ -3,10 +3,12 @@ import { AuthService } from '../auth.service';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { RecruiterDashboardComponent } from '../recruiter-dashboard/recruiter-dashboard.component';
 import { UserDashboardComponent } from '../user-dashboard/user-dashboard.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
+    CommonModule,
     AdminDashboardComponent,
     RecruiterDashboardComponent,
     UserDashboardComponent,
