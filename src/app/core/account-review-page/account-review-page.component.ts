@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../data-services/user.service';
-import { User } from '../../models/user.model';
+import { UserProfileView } from '../../models/user/user-profile-view.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { AdminService } from '../data-services/admin.service';
+import { RegisteredAccountShortView } from '../../models/registered-account/registered-account.model';
 
 @Component({
   selector: 'app-review-page',
@@ -23,8 +24,8 @@ import { HeaderComponent } from '../header/header.component';
   styleUrl: './account-review-page.component.scss',
 })
 export class AccountReviewPageComponent implements OnInit {
-  userId: string | undefined;
-  user: User | undefined;
+  userId: string | null = '';
+  user: RegisteredAccountShortView | undefined;
   error: string = '';
 
   showDeclineReason: boolean = false;
@@ -32,29 +33,22 @@ export class AccountReviewPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private adminService: AdminService
   ) {}
 
   ngOnInit(): void {
-    this.user = {
-      firstName: 'name',
-      lastName: 'last name',
-      role: 'engineer',
-      skills: 'my skills',
-      location: 'remote',
-      yearsOfExperience: '12',
-      englishLevel: 'A2',
-    };
-    // this.userId = this.route.snapshot.paramMap.get('userId');
+    this.userId = this.route.snapshot.paramMap.get('userId');
 
-    // if (userId) {
-    //   this.userService.getUserById(userId).subscribe({
-    //     next: (data) => (this.user = data),
-    //     error: () => {
-    //       this.errorMessage = 'Error occured during account retrieval';
-    //     },
-    //   });
-    // }
+    if (this.userId) {
+      let userIdNumber = Number.parseInt(this.userId);
+
+      this.adminService.getRegisteredAccountById(userIdNumber).subscribe({
+        next: (data) => (this.user = data),
+        error: () => {
+          this.error = 'Error occured during account retrieval';
+        },
+      });
+    }
   }
 
   verifyUser(): void {}
