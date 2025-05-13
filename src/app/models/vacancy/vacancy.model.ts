@@ -1,4 +1,5 @@
 export interface VacancyView {
+  vacancyId: string;
   title: string;
   description: string;
   requirements: string;
