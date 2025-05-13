@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { LoginRegisterModel } from '../../models/auth/login-register.model';
 import { RecruiterView } from '../../models/recruiter/recruiter-view.model';
 import { UserAuthentication } from '../../models/auth/user-authentication.model';
+import { VacancyView } from '../../models/vacancy/vacancy.model';
 
 @Injectable({
   providedIn: 'root',
@@ -54,5 +55,12 @@ export class RecruiterService {
    */
   deleteAccount(): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/me`);
+  }
+
+  /**
+   * Get recruiter's vacancies
+   */
+  getRecruitersVacancies(): Observable<VacancyView[]> {
+    return this.http.get<VacancyView[]>(`${this.apiUrl}/vacancies`);
   }
 }
