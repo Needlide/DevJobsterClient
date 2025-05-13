@@ -1,0 +1,40 @@
+.content-body {
+  width: 800px;
+  background-color: #675c6b;
+  border-radius: 15px;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.title-container {
+  border-radius: 15px;
+  background-color: #a891a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+mat-expansion-panel {
+  background-color: #787780;
+  color: #fff;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+mat-panel-title,
+mat-panel-description {
+  font-weight: bold;
+}
+
+.applicant-details {
+  padding: 10px 0;
+  line-height: 1.6;
+}
+
+.no-vacancies {
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+}

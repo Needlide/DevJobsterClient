@@ -1,0 +1,38 @@
+<div class="container--centered">
+  <div class="content-body">
+    <div class="title-container">
+      <h2>List of Applicants</h2>
+    </div>
+
+    <mat-accordion *ngIf="applicants.length > 0">
+      <mat-expansion-panel *ngFor="let applicant of applicants">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ applicant.firstName }} {{ applicant.lastName }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ applicant.role }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="applicant-details">
+          <p>
+            <strong>Full Name:</strong> {{ applicant.firstName }}
+            {{ applicant.lastName }}
+          </p>
+          <p><strong>Role:</strong> {{ applicant.role }}</p>
+          <p><strong>Location:</strong> {{ applicant.location }}</p>
+          <p>
+            <strong>Years of Experience:</strong>
+            {{ applicant.yearsOfExperience }}
+          </p>
+          <p><strong>English Level:</strong> {{ applicant.englishLevel }}</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div *ngIf="applicants.length === 0" class="no-vacancies">
+      <p>No applicants at the moment.</p>
+    </div>
+  </div>
+</div>
