@@ -3,6 +3,19 @@
     <h1>Register</h1>
   </div>
 
+  <div class="user-type-toggle">
+    <mat-button-toggle-group
+      name="userType"
+      [(ngModel)]="userType"
+      aria-label="User type toggle"
+      appearance="legacy"
+      class="user-type-group"
+    >
+      <mat-button-toggle value="user">User</mat-button-toggle>
+      <mat-button-toggle value="recruiter">Recruiter</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
   <div class="content-body">
     <div class="login-form">
       <form (ngSubmit)="onRegister()" #registerForm="ngForm">

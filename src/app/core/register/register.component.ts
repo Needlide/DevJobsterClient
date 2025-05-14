@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatButtonToggleModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -24,8 +26,21 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent {
   email = '';
   password = '';
+  userType: 'user' | 'recruiter' = 'user';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onRegister() {}
+  onRegister(): void {
+    if (!this.email || !this.password) return;
+
+    const credentials = {
+      email: this.email,
+      password: this.password,
+    };
+
+    this.authService.register(credentials, this.userType).subscribe({
+      next: () => this.router.navigate(['/login']),
+      error: (err) => console.error('Registration failed', err),
+    });
+  }
 }
