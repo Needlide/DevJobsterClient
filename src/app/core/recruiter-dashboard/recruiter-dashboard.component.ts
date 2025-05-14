@@ -88,6 +88,6 @@ export class RecruiterDashboardComponent implements OnInit {
   }
 
   applicants(): void {
-    this.router.navigate(['/applicants']);
+    this.router.navigate(['/applicants', this.selectedVacancy?.vacancyId]);
   }
 }
