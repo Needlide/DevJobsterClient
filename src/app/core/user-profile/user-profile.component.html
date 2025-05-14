@@ -10,25 +10,25 @@
       <li>English level</li>
     </ul>
 
-    <div class="action-panel">
+    <div *ngIf="user" class="action-panel">
       <mat-form-field appearance="fill" class="role-field">
         <mat-label>Role</mat-label>
         <input
           matInput
           type="text"
           placeholder="e.g. Fullstack Developer"
-          [(ngModel)]="role"
+          [(ngModel)]="user.role"
           name="role"
           required
           role
           #roleInput="ngModel"
         />
         <button
-          *ngIf="role"
+          *ngIf="user.role"
           matSuffix
           mat-icon-button
           aria-label="Clear"
-          (click)="role = ''"
+          (click)="user.role = ''"
         >
           <mat-icon>close</mat-icon>
         </button>
@@ -45,19 +45,18 @@
           type="text"
           placeholder="React, Javascript, Next.js, node.js"
           name="skills"
-          [(ngModel)]="skills"
+          [(ngModel)]="user.skills"
           #skillsInput="ngModel"
           required
           validateCommaSeparated
           [ngModelOptions]="{ updateOn: 'blur' }"
-          [ngModel]="skills"
         />
         <button
-          *ngIf="skills"
+          *ngIf="user.skills"
           matSuffix
           mat-icon-button
           aria-label="Clear"
-          (click)="skills = ''"
+          (click)="user.skills = ''"
         >
           <mat-icon>close</mat-icon>
         </button>
@@ -81,7 +80,7 @@
           type="number"
           placeholder="1.5"
           name="experience"
-          [(ngModel)]="yearsOfExperience"
+          [(ngModel)]="user.yearsOfExperience"
           #experienceInput="ngModel"
           required
           experience
@@ -100,7 +99,7 @@
 
       <mat-form-field appearance="fill" class="location-dropdown">
         <mat-label>Location</mat-label>
-        <mat-select [(ngModel)]="location" name="country">
+        <mat-select [(ngModel)]="user.location" name="country">
           <mat-option *ngFor="let country of countries" [value]="country">
             {{ country }}
           </mat-option>
@@ -108,7 +107,7 @@
       </mat-form-field>
 
       <mat-radio-group
-        [(ngModel)]="englishLevel"
+        [(ngModel)]="user.englishLevel"
         name="englishLevel"
         class="english-level"
       >
