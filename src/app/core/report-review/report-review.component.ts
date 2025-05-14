@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReportView } from '../../models/report-view.model';
+import { ReportView } from '../../models/admin/report-view.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
