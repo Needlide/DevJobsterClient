@@ -1,6 +1,5 @@
 export interface UpdateVacancy {
   description: string;
-  salary: number;
   requirements: string;
   companyWebsite: string;
   typeOfJob: string;
