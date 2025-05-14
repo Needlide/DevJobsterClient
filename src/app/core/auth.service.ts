@@ -21,6 +21,20 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
+  register(
+    credentials: LoginRegisterModel,
+    type: 'user' | 'recruiter' = 'user'
+  ): Observable<void> {
+    if (type == 'user')
+      return this.httpClient.post<void>(`${this.apiUrl}/users`, credentials);
+    else {
+      return this.httpClient.post<void>(
+        `${this.apiUrl}/recruiters`,
+        credentials
+      );
+    }
+  }
+
   login(credentials: LoginRegisterModel): Observable<{ token: string }> {
     return this.httpClient.post<{ token: string }>(
       `${this.apiUrl}/auth/login`,
