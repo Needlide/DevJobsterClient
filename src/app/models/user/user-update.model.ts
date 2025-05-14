@@ -4,6 +4,6 @@ export interface UserUpdate {
   role?: string;
   skills?: string;
   location?: string;
-  yearsOfExperience?: number;
+  yearsOfExperience?: string;
   englishLevel?: string;
 }
