@@ -18,8 +18,8 @@ export class VacancyService {
   /**
    * Get all vacancies (User & Admin)
    */
-  getAllVacancies(): Observable<Promise<VacancyView>[]> {
-    return this.http.get<Promise<VacancyView>[]>(`${this.apiUrl}/`);
+  getAllVacancies(): Observable<VacancyView[]> {
+    return this.http.get<VacancyView[]>(`${this.apiUrl}/`);
   }
 
   /**
