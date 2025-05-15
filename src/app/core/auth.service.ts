@@ -5,6 +5,8 @@ import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../environments/environment.development';
 import { LoginRegisterModel } from '../models/auth/login-register.model';
 import { Observable } from 'rxjs/internal/Observable';
+import { ApiResponse } from '../models/api-response.model';
+import { TokenModel } from '../models/token.model';
 
 interface TokenPayload {
   exp: number;
@@ -24,19 +26,22 @@ export class AuthService {
   register(
     credentials: LoginRegisterModel,
     type: 'user' | 'recruiter' = 'user'
-  ): Observable<void> {
+  ): Observable<ApiResponse<void>> {
     if (type == 'user')
-      return this.httpClient.post<void>(`${this.apiUrl}/users`, credentials);
+      return this.httpClient.post<ApiResponse<void>>(
+        `${this.apiUrl}/users`,
+        credentials
+      );
     else {
-      return this.httpClient.post<void>(
+      return this.httpClient.post<ApiResponse<void>>(
         `${this.apiUrl}/recruiters`,
         credentials
       );
     }
   }
 
-  login(credentials: LoginRegisterModel): Observable<{ token: string }> {
-    return this.httpClient.post<{ token: string }>(
+  login(credentials: LoginRegisterModel): Observable<ApiResponse<TokenModel>> {
+    return this.httpClient.post<ApiResponse<TokenModel>>(
       `${this.apiUrl}/auth/login`,
       credentials
     );
