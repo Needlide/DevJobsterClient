@@ -70,6 +70,7 @@ export class UserDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.vacancyService.getAllVacancies().subscribe({
       next: (data) => (this.vacancies = data.data),
+      error: (error) => console.error(error),
     });
   }
 

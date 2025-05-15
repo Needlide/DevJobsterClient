@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ vacancy.title }}</h2>
+
+<mat-dialog-content>
+  <p><strong>Type of Job:</strong> {{ vacancy.typeOfJob }}</p>
+  <p>
+    <strong>Location:</strong> {{ vacancy.location }}, {{ vacancy.country }}
+  </p>
+  <p><strong>Description:</strong></p>
+  <p>{{ vacancy.description }}</p>
+  <p><strong>Requirements:</strong></p>
+  <p>{{ vacancy.requirements }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <a mat-button color="accent" [href]="vacancy.companyWebsite" target="_blank">
+    Go to Company Website
+  </a>
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>

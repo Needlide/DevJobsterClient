@@ -12,7 +12,7 @@ import { ApiResponse } from '../../models/api-response.model';
   providedIn: 'root',
 })
 export class VacancyService {
-  private apiUrl = `${environment.apiUrl}/api/vacancies`;
+  private apiUrl = `${environment.apiUrl}/vacancies`;
 
   constructor(private http: HttpClient) {}
 

@@ -33,7 +33,7 @@ export class LoginComponent {
       next: (res) => {
         this.authService.storeToken(res.data.token);
         const role = this.authService.getUserRole();
-        switch (role) {
+        switch (role?.toLocaleLowerCase()) {
           case 'admin':
             this.router.navigate(['/dashboard']);
             break;

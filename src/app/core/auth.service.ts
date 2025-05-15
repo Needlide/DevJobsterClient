@@ -72,6 +72,6 @@ export class AuthService {
 
   getUserRole(): string | null {
     const decoded = this.getDecodedToken();
-    return decoded?.role || null;
+    return decoded?.role.toLocaleLowerCase() || null;
   }
 }

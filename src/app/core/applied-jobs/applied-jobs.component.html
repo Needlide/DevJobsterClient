@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container--centered">
   <div class="content-body">
     <div class="title-container">
@@ -17,7 +18,13 @@
         <a mat-button [href]="vacancy.companyWebsite" target="_blank"
           >VISIT COMPANY</a
         >
-        <button mat-button color="primary">VIEW DETAILS</button>
+        <button
+          mat-button
+          color="primary"
+          (click)="openVacancyDetails(vacancy)"
+        >
+          VIEW DETAILS
+        </button>
       </mat-card-actions>
     </mat-card>
 

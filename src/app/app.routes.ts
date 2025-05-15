@@ -12,20 +12,14 @@ import { AppliedJobsComponent } from './core/applied-jobs/applied-jobs.component
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { RecruiterProfileComponent } from './core/recruiter-profile/recruiter-profile.component';
 import { ApplicantsComponent } from './core/applicants/applicants.component';
+import { ProfileComponent } from './core/profile/profile.component';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'user',
-    component: UserProfileComponent,
-    canActivate: [authGuard, roleGuard],
-    data: { roles: ['user'] },
-  },
-  {
-    path: 'recruiter',
-    component: RecruiterProfileComponent,
-    canActivate: [authGuard, roleGuard],
-    data: { roles: ['recruiter'] },
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'dashboard',

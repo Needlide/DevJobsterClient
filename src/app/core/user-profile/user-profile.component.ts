@@ -13,6 +13,7 @@ import { HeaderComponent } from '../header/header.component';
 import { UserProfileView } from '../../models/user/user-profile-view.model';
 import { UserService } from '../data-services/user.service';
 import { UserUpdate } from '../../models/user/user-update.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-profile',
@@ -77,13 +78,19 @@ export class UserProfileComponent implements OnInit {
       role: this.user.role,
       skills: this.user.skills,
       location: this.user.location,
-      yearsOfExperience: this.user.yearsOfExperience,
-      englishLevel: this.user.englishLevel,
+      yearsOfExperience: String(this.user.yearsOfExperience),
+      englishLevel: String(this.user.englishLevel),
     };
 
     this.userService.updateUser(updateUser).subscribe({
       next: () => {
         this.buttonText = 'Saved';
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 400 && error.error?.errors) {
+          console.error(error);
+          console.log('Validation Errors:', error.error.errors);
+        }
       },
     });
   }
