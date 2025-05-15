@@ -7,15 +7,7 @@
         <div class="user-details">
           <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
           <p><strong>Role:</strong> {{ user.role }}</p>
-          <p><strong>Location:</strong> {{ user.location }}</p>
-          <p>
-            <strong>Years of Experience:</strong> {{ user.yearsOfExperience }}
-          </p>
-          <p><strong>English Level:</strong> {{ user.englishLevel }}</p>
-          <p><strong>Skills:</strong></p>
-          <mat-card class="skills-box">
-            {{ user.skills || "No skills provided." }}
-          </mat-card>
+          <p><strong>Location:</strong> {{ user.createdAt }}</p>
         </div>
 
         <div class="actions">
