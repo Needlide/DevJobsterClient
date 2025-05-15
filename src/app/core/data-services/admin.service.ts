@@ -7,6 +7,7 @@ import { ReportView } from '../../models/admin/report-view.model';
 import { AdminView } from '../../models/admin/admin-view.model';
 import { LogView } from '../../models/admin/log-view.model';
 import { RegisteredAccountUpdatedStatus } from '../../models/registered-account/registered-model-updated-status.model';
+import { ApiResponse } from '../../models/api-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,42 +17,52 @@ export class AdminService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllAdmins(): Observable<AdminView[]> {
-    return this.httpClient.get<AdminView[]>(`${this.apiUrl}/admins`);
+  getAllAdmins(): Observable<ApiResponse<AdminView[]>> {
+    return this.httpClient.get<ApiResponse<AdminView[]>>(
+      `${this.apiUrl}/admins`
+    );
   }
 
-  getAdminById(adminId: string): Observable<AdminView> {
-    return this.httpClient.get<AdminView>(`${this.apiUrl}/admins/${adminId}`);
+  getAdminById(adminId: string): Observable<ApiResponse<AdminView>> {
+    return this.httpClient.get<ApiResponse<AdminView>>(
+      `${this.apiUrl}/admins/${adminId}`
+    );
   }
 
-  getAllReports(): Observable<ReportView[]> {
-    return this.httpClient.get<ReportView[]>(`${this.apiUrl}/reports`);
+  getAllReports(): Observable<ApiResponse<ReportView[]>> {
+    return this.httpClient.get<ApiResponse<ReportView[]>>(
+      `${this.apiUrl}/reports`
+    );
   }
 
-  getReportById(reportId: number): Observable<ReportView> {
-    return this.httpClient.get<ReportView>(
+  getReportById(reportId: number): Observable<ApiResponse<ReportView>> {
+    return this.httpClient.get<ApiResponse<ReportView>>(
       `${this.apiUrl}/reports/${reportId}`
     );
   }
 
-  getLogs(startDate: Date, endDate: Date): Observable<LogView[]> {
+  getLogs(startDate: Date, endDate: Date): Observable<ApiResponse<LogView[]>> {
     const params = new HttpParams()
       .set('startDate', startDate.toISOString())
       .set('endDate', endDate.toISOString());
 
-    return this.httpClient.get<LogView[]>(`${this.apiUrl}/logs`, { params });
+    return this.httpClient.get<ApiResponse<LogView[]>>(`${this.apiUrl}/logs`, {
+      params,
+    });
   }
 
-  getRegisteredAccounts(): Observable<RegisteredAccountShortView[]> {
-    return this.httpClient.get<RegisteredAccountShortView[]>(
+  getRegisteredAccounts(): Observable<
+    ApiResponse<RegisteredAccountShortView[]>
+  > {
+    return this.httpClient.get<ApiResponse<RegisteredAccountShortView[]>>(
       `${this.apiUrl}/accounts`
     );
   }
 
   getRegisteredAccountById(
     accountId: number
-  ): Observable<RegisteredAccountShortView> {
-    return this.httpClient.get<RegisteredAccountShortView>(
+  ): Observable<ApiResponse<RegisteredAccountShortView>> {
+    return this.httpClient.get<ApiResponse<RegisteredAccountShortView>>(
       `${this.apiUrl}/accounts/${accountId}`
     );
   }

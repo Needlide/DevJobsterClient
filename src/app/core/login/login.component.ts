@@ -31,12 +31,14 @@ export class LoginComponent {
     var credentials = { email: this.email, password: this.password };
     this.authService.login(credentials).subscribe({
       next: (res) => {
+        console.log('API responded');
         this.authService.storeToken(res.token);
+        console.log('Token is stored: ' + res.token);
         const role = this.authService.getUserRole();
-
+        console.log(`User's role is: ` + role);
         switch (role) {
           case 'admin':
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/dashboard']);
             break;
           case 'recruiter':
             this.router.navigate(['/recruiter']);

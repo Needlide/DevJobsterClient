@@ -6,6 +6,7 @@ import { VacancyView } from '../../models/vacancy/vacancy.model';
 import { AddVacancy } from '../../models/vacancy/add-vacancy.model';
 import { UpdateVacancy } from '../../models/vacancy/update-vacancy.model';
 import { UserApplicationView } from '../../models/user/user-application-view.model';
+import { ApiResponse } from '../../models/api-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,36 +19,41 @@ export class VacancyService {
   /**
    * Get all vacancies (User & Admin)
    */
-  getAllVacancies(): Observable<VacancyView[]> {
-    return this.http.get<VacancyView[]>(`${this.apiUrl}/`);
+  getAllVacancies(): Observable<ApiResponse<VacancyView[]>> {
+    return this.http.get<ApiResponse<VacancyView[]>>(`${this.apiUrl}/`);
   }
 
   /**
    * Get a single vacancy by ID
    */
-  getVacancyById(vacancyId: string): Observable<VacancyView> {
-    return this.http.get<VacancyView>(`${this.apiUrl}/${vacancyId}`);
+  getVacancyById(vacancyId: string): Observable<ApiResponse<VacancyView>> {
+    return this.http.get<ApiResponse<VacancyView>>(
+      `${this.apiUrl}/${vacancyId}`
+    );
   }
 
   /**
    * Create a new vacancy (Recruiter only)
    */
-  createVacancy(vacancy: AddVacancy): Observable<AddVacancy> {
-    return this.http.post<AddVacancy>(`${this.apiUrl}/`, vacancy);
+  createVacancy(vacancy: AddVacancy): Observable<ApiResponse<AddVacancy>> {
+    return this.http.post<ApiResponse<AddVacancy>>(`${this.apiUrl}/`, vacancy);
   }
 
   /**
    * Update a vacancy (Recruiter only)
    */
-  updateVacancy(vacancy: UpdateVacancy): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${vacancy.vacancyId}`, vacancy);
+  updateVacancy(vacancy: UpdateVacancy): Observable<ApiResponse<void>> {
+    return this.http.put<ApiResponse<void>>(
+      `${this.apiUrl}/${vacancy.vacancyId}`,
+      vacancy
+    );
   }
 
   /**
    * Delete a vacancy (Recruiter & Admin only)
    */
-  deleteVacancy(vacancyId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${vacancyId}`);
+  deleteVacancy(vacancyId: string): Observable<ApiResponse<void>> {
+    return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/${vacancyId}`);
   }
 
   /**
@@ -55,8 +61,8 @@ export class VacancyService {
    */
   getApplicationsByVacancy(
     vacancyId: string
-  ): Observable<UserApplicationView[]> {
-    return this.http.get<UserApplicationView[]>(
+  ): Observable<ApiResponse<UserApplicationView[]>> {
+    return this.http.get<ApiResponse<UserApplicationView[]>>(
       `${this.apiUrl}/${vacancyId}/applications`
     );
   }
@@ -64,7 +70,9 @@ export class VacancyService {
   /**
    * Get vacancies the current user applied to (User only)
    */
-  getUserVacancyApplications(): Observable<VacancyView[]> {
-    return this.http.get<VacancyView[]>(`${this.apiUrl}/applications`);
+  getUserVacancyApplications(): Observable<ApiResponse<VacancyView[]>> {
+    return this.http.get<ApiResponse<VacancyView[]>>(
+      `${this.apiUrl}/applications`
+    );
   }
 }

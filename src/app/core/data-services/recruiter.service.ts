@@ -6,6 +6,7 @@ import { LoginRegisterModel } from '../../models/auth/login-register.model';
 import { RecruiterView } from '../../models/recruiter/recruiter-view.model';
 import { UserAuthentication } from '../../models/auth/user-authentication.model';
 import { VacancyView } from '../../models/vacancy/vacancy.model';
+import { ApiResponse } from '../../models/api-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,49 +19,56 @@ export class RecruiterService {
   /**
    * Get all recruiters (Admin only)
    */
-  getAllRecruiters(): Observable<RecruiterView[]> {
-    return this.http.get<RecruiterView[]>(`${this.apiUrl}/`);
+  getAllRecruiters(): Observable<ApiResponse<RecruiterView[]>> {
+    return this.http.get<ApiResponse<RecruiterView[]>>(`${this.apiUrl}/`);
   }
 
   /**
    * Get current recruiter profile
    */
-  getCurrentRecruiter(): Observable<RecruiterView> {
-    return this.http.get<RecruiterView>(`${this.apiUrl}/me`);
+  getCurrentRecruiter(): Observable<ApiResponse<RecruiterView>> {
+    return this.http.get<ApiResponse<RecruiterView>>(`${this.apiUrl}/me`);
   }
 
   /**
    * Register a new recruiter
    */
-  registerRecruiter(model: LoginRegisterModel): Observable<RecruiterView> {
-    return this.http.post<RecruiterView>(`${this.apiUrl}/`, model);
+  registerRecruiter(
+    model: LoginRegisterModel
+  ): Observable<ApiResponse<RecruiterView>> {
+    return this.http.post<ApiResponse<RecruiterView>>(`${this.apiUrl}/`, model);
   }
 
   /**
    * Update current recruiter profile
    */
-  updateRecruiterProfile(update: RecruiterView): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/me`, update);
+  updateRecruiterProfile(update: RecruiterView): Observable<ApiResponse<void>> {
+    return this.http.put<ApiResponse<void>>(`${this.apiUrl}/me`, update);
   }
 
   /**
    * Reset recruiter password
    */
-  resetPassword(auth: UserAuthentication): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/reset-password`, auth);
+  resetPassword(auth: UserAuthentication): Observable<ApiResponse<void>> {
+    return this.http.post<ApiResponse<void>>(
+      `${this.apiUrl}/reset-password`,
+      auth
+    );
   }
 
   /**
    * Delete current recruiter account
    */
-  deleteAccount(): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/me`);
+  deleteAccount(): Observable<ApiResponse<void>> {
+    return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/me`);
   }
 
   /**
    * Get recruiter's vacancies
    */
-  getRecruitersVacancies(): Observable<VacancyView[]> {
-    return this.http.get<VacancyView[]>(`${this.apiUrl}/vacancies`);
+  getRecruitersVacancies(): Observable<ApiResponse<VacancyView[]>> {
+    return this.http.get<ApiResponse<VacancyView[]>>(
+      `${this.apiUrl}/vacancies`
+    );
   }
 }

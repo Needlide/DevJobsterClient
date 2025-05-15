@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { UserUpdate } from '../../models/user/user-update.model';
 import { LoginRegisterModel } from '../../models/auth/login-register.model';
 import { UserAuthentication } from '../../models/auth/user-authentication.model';
+import { ApiResponse } from '../../models/api-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,32 +16,39 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllUsers(): Observable<UserProfileView[]> {
-    return this.httpClient.get<UserProfileView[]>(`${this.apiUrl}/`);
+  getAllUsers(): Observable<ApiResponse<UserProfileView[]>> {
+    return this.httpClient.get<ApiResponse<UserProfileView[]>>(
+      `${this.apiUrl}/`
+    );
   }
 
-  getCurrentUser(): Observable<UserProfileView> {
-    return this.httpClient.get<UserProfileView>(`${this.apiUrl}/me`);
+  getCurrentUser(): Observable<ApiResponse<UserProfileView>> {
+    return this.httpClient.get<ApiResponse<UserProfileView>>(
+      `${this.apiUrl}/me`
+    );
   }
 
-  registerUser(model: LoginRegisterModel): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/`, model);
+  registerUser(model: LoginRegisterModel): Observable<ApiResponse<any>> {
+    return this.httpClient.post<ApiResponse<any>>(`${this.apiUrl}/`, model);
   }
 
-  updateUser(user: UserUpdate): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}/me`, user);
+  updateUser(user: UserUpdate): Observable<ApiResponse<any>> {
+    return this.httpClient.put<ApiResponse<any>>(`${this.apiUrl}/me`, user);
   }
 
-  deleteUser(): Observable<any> {
-    return this.httpClient.delete(`${this.apiUrl}/me`);
+  deleteUser(): Observable<ApiResponse<any>> {
+    return this.httpClient.delete<ApiResponse<any>>(`${this.apiUrl}/me`);
   }
 
-  resetPassword(userAuth: UserAuthentication): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/reset-password`, userAuth);
+  resetPassword(userAuth: UserAuthentication): Observable<ApiResponse<any>> {
+    return this.httpClient.post<ApiResponse<any>>(
+      `${this.apiUrl}/reset-password`,
+      userAuth
+    );
   }
 
-  getUserApplications(): Observable<UserProfileView[]> {
-    return this.httpClient.get<UserProfileView[]>(
+  getUserApplications(): Observable<ApiResponse<UserProfileView[]>> {
+    return this.httpClient.get<ApiResponse<UserProfileView[]>>(
       `${this.apiUrl}/my-applications`
     );
   }

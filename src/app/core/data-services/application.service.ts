@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../../environments/environment.development';
+import { ApiResponse } from '../../models/api-response.model';
+import { AddApplication } from '../../models/vacancy/add-application.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,12 @@ export class ApplicationService {
 
   constructor(private httpClient: HttpClient) {}
 
-  createApplication(vacancyId: string): Observable<any> {
-    return this.httpClient.post(`${this.apiUrl}/applications`, { vacancyId });
+  createApplication(
+    vacancyId: string
+  ): Observable<ApiResponse<AddApplication>> {
+    return this.httpClient.post<ApiResponse<AddApplication>>(
+      `${this.apiUrl}/applications`,
+      { vacancyId }
+    );
   }
 }
