@@ -43,7 +43,7 @@ export class AccountReviewPageComponent implements OnInit {
       let userIdNumber = Number.parseInt(this.userId);
 
       this.adminService.getRegisteredAccountById(userIdNumber).subscribe({
-        next: (data) => (this.user = data),
+        next: (data) => (this.user = data.data),
         error: () => {
           this.error = 'Error occured during account retrieval';
         },

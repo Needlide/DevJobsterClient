@@ -29,7 +29,7 @@ export class RecruiterProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.recruiterService.getCurrentRecruiter().subscribe({
-      next: (data) => (this.recruiter = data),
+      next: (data) => (this.recruiter = data.data),
     });
   }
 

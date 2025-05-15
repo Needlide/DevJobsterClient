@@ -34,7 +34,7 @@ export class RecruiterDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.recruiterService.getRecruitersVacancies().subscribe({
-      next: (data) => (this.vacancies = data),
+      next: (data) => (this.vacancies = data.data),
     });
   }
 

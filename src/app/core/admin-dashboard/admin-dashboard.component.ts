@@ -22,11 +22,11 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getRegisteredAccounts().subscribe({
-      next: (data) => (this.registeredAccounts = data),
+      next: (data) => (this.registeredAccounts = data.data),
     });
 
     this.adminService.getAllReports().subscribe({
-      next: (data) => (this.reports = data),
+      next: (data) => (this.reports = data.data),
     });
   }
 

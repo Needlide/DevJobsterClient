@@ -16,7 +16,7 @@ export class AppliedJobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.vacancyService.getUserVacancyApplications().subscribe({
-      next: (data) => (this.vacancies = data),
+      next: (data) => (this.vacancies = data.data),
     });
   }
 

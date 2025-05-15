@@ -25,7 +25,7 @@ export class ApplicantsComponent implements OnInit {
 
     if (this.vacancyId) {
       this.vacancyService.getApplicationsByVacancy(this.vacancyId).subscribe({
-        next: (data) => (this.applicants = data),
+        next: (data) => (this.applicants = data.data),
       });
     }
   }

@@ -38,7 +38,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe({
-      next: (data) => (this.user = data),
+      next: (data) => (this.user = data.data),
     });
   }
 
