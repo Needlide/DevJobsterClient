@@ -32,17 +32,8 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe({
       next: (res) => {
         this.authService.storeToken(res.data.token);
-        const role = this.authService.getUserRole();
-        switch (role?.toLocaleLowerCase()) {
-          case 'admin':
-            this.router.navigate(['/dashboard']);
-            break;
-          case 'recruiter':
-            this.router.navigate(['/recruiter']);
-            break;
-          default:
-            this.router.navigate(['/user']);
-        }
+
+        this.router.navigate(['/dashboard']);
       },
       error: () => {
         alert('Login failed');
