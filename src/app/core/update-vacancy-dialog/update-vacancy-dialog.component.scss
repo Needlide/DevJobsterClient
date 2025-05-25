@@ -1,3 +1,11 @@
+.modal {
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #b38ddf;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
 .mat-dialog-container {
   background-color: #ecdcff;
   border-radius: 15px;
