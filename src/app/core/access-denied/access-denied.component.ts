@@ -13,6 +13,6 @@ export class AccessDeniedComponent {
   constructor(private router: Router) {}
 
   goHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/dashboard']);
   }
 }
