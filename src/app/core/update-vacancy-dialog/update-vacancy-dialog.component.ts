@@ -8,10 +8,11 @@ import {
 } from '@angular/forms';
 import { VacancyView } from '../../models/vacancy/vacancy.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-update-vacancy-dialog',
-  imports: [MatFormFieldModule, ReactiveFormsModule],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule],
   templateUrl: './update-vacancy-dialog.component.html',
   styleUrl: './update-vacancy-dialog.component.scss',
 })
