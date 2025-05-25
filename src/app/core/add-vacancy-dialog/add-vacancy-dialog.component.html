@@ -1,0 +1,56 @@
+<div class="modal">
+  <h1 mat-dialog-title>Create Vacancy</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form" class="form-container">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Title</mat-label>
+        <textarea matInput formControlName="title"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="3"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Salary</mat-label>
+        <textarea matInput formControlName="salary"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Requirements</mat-label>
+        <textarea matInput formControlName="requirements" rows="3"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Company Website</mat-label>
+        <input matInput formControlName="companyWebsite" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Type of Job</mat-label>
+        <input matInput formControlName="typeOfJob" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Benefits</mat-label>
+        <textarea matInput formControlName="benefits"></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+  </div>
+</div>

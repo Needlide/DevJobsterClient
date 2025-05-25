@@ -1,0 +1,75 @@
+.modal {
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #ecdcff;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.mat-dialog-container {
+  background-color: #ecdcff;
+  border-radius: 15px;
+  padding: 20px;
+  color: #212121;
+}
+
+h1[mat-dialog-title] {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #212121;
+}
+
+[mat-dialog-content] {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-form-field {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.mat-input-element {
+  color: #212121;
+}
+
+.mat-form-field-label {
+  color: #675c6b;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+[mat-dialog-actions] {
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button[mat-button] {
+  color: #675c6b;
+}
+
+button[mat-flat-button] {
+  background-color: #b38ddf;
+  color: #212121;
+  border-radius: 8px;
+}
+
+button[mat-flat-button]:hover {
+  background-color: #a67cd6;
+}
