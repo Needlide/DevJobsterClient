@@ -17,12 +17,15 @@
 }
 
 .title-box {
-  border-radius: 15px;
+  flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   background-color: #ceb0b0;
   color: #212121;
+  padding: 10px 20px;
+  border-radius: 15px;
 }
 
 .vacancy-list {

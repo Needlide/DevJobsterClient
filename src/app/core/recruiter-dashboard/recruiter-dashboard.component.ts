@@ -11,6 +11,9 @@ import { VacancyService } from '../data-services/vacancy.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateVacancyDialogComponent } from '../update-vacancy-dialog/update-vacancy-dialog.component';
 import { UpdateVacancy } from '../../models/vacancy/update-vacancy.model';
+import { AddVacancyDialogComponent } from '../add-vacancy-dialog/add-vacancy-dialog.component';
+import { AddVacancy } from '../../models/vacancy/add-vacancy.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-recruiter-dashboard',
@@ -29,7 +32,8 @@ export class RecruiterDashboardComponent implements OnInit {
     private recruiterService: RecruiterService,
     private vacancyService: VacancyService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +47,29 @@ export class RecruiterDashboardComponent implements OnInit {
 
   onVacancySelect(vacancy: VacancyView): void {
     this.selectedVacancy = vacancy;
+  }
+
+  add(): void {
+    const dialogRef = this.dialog.open(AddVacancyDialogComponent, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: AddVacancy | undefined) => {
+      if (result) {
+        this.vacancyService.createVacancy(result).subscribe({
+          next: () => {
+            this.recruiterService.getRecruitersVacancies().subscribe({
+              next: (data) => (this.vacancies = data.data),
+            });
+          },
+          error: (err) => {
+            console.error('Failed to add vacancy', err);
+            const message = this.extractErrorMessages(err);
+            this.snackBar.open(message, 'Close', { duration: 5000 });
+          },
+        });
+      }
+    });
   }
 
   update(): void {
@@ -76,18 +103,59 @@ export class RecruiterDashboardComponent implements OnInit {
           },
           error: (err) => {
             console.error('Failed to update vacancy', err);
+            const message = this.extractErrorMessages(err);
+            this.snackBar.open(message, 'Close', { duration: 5000 });
           },
         });
       }
     });
   }
 
-  delete(): void {
+  deleteVacancy(): void {
     if (this.selectedVacancy)
-      this.vacancyService.deleteVacancy(this.selectedVacancy?.vacancyId);
+      this.vacancyService
+        .deleteVacancy(this.selectedVacancy?.vacancyId)
+        .subscribe({
+          next: () => {
+            this.recruiterService.getRecruitersVacancies().subscribe({
+              next: (data) => (this.vacancies = data.data),
+            });
+
+            this.snackBar.open('Deleted successfully', 'Close', {
+              duration: 5000,
+            });
+          },
+          error: (err) => {
+            console.error('Failed to delete vacancy', err);
+            const message = this.extractErrorMessages(err);
+            this.snackBar.open(message, 'Close', { duration: 5000 });
+          },
+        });
   }
 
   applicants(): void {
     this.router.navigate(['/applicants', this.selectedVacancy?.vacancyId]);
+  }
+
+  private extractErrorMessages(error: any): string {
+    if (
+      error.status === 400 &&
+      error.error &&
+      typeof error.error === 'object'
+    ) {
+      if (Array.isArray(error.error.errors)) {
+        return error.error.errors
+          .map((e: any) => e.errorMessage || e.message)
+          .join('\n');
+      }
+
+      if (error.error.errors) {
+        return Object.values(error.error.errors)
+          .map((errArr: any) => errArr.join(', '))
+          .join('\n');
+      }
+    }
+
+    return 'An unexpected error occurred. Please try again.';
   }
 }

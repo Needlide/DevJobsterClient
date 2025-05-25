@@ -4,6 +4,9 @@
     <div class="left-panel">
       <div class="title-box">
         <h2>Active vacancies</h2>
+        <button mat-raised-button color="accent" (click)="add()">
+          + Add Vacancy
+        </button>
       </div>
 
       <mat-list class="vacancy-list">
@@ -62,7 +65,7 @@
         <button mat-raised-button color="tertiary" (click)="applicants()">
           View applicants
         </button>
-        <button mat-raised-button color="tertiary" (click)="delete()">
+        <button mat-raised-button color="tertiary" (click)="deleteVacancy()">
           Delete
         </button>
       </mat-card-actions>
