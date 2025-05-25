@@ -21,7 +21,7 @@ export class ApplicantsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.vacancyId = this.route.snapshot.paramMap.get('userId');
+    this.vacancyId = this.route.snapshot.paramMap.get('vacancyId')!;
 
     if (this.vacancyId) {
       this.vacancyService.getApplicationsByVacancy(this.vacancyId).subscribe({
