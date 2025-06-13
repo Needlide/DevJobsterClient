@@ -12,15 +12,20 @@
 
 .content-body {
   width: 1150px;
-  height: 720px;
+  height: 760px;
   display: flex;
   flex-direction: column;
-  gap: 45px;
+  gap: 30px;
   background-color: #675c6b;
   margin-top: 65px;
   border-radius: 15px;
   align-items: center;
   justify-content: center;
+}
+
+.user-type-toggle {
+  border-radius: 15px;
+  background-color: #ceb0b0;
 }
 
 .login-form {
