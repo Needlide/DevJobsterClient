@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { LoginRegisterModel } from '../../models/auth/login-register.model';
 import { RecruiterView } from '../../models/recruiter/recruiter-view.model';
 import { UserAuthentication } from '../../models/auth/user-authentication.model';

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { VacancyView } from '../../models/vacancy/vacancy.model';
 import { AddVacancy } from '../../models/vacancy/add-vacancy.model';
 import { UpdateVacancy } from '../../models/vacancy/update-vacancy.model';
