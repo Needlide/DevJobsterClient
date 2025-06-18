@@ -13,11 +13,6 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Salary</mat-label>
-        <textarea matInput formControlName="salary"></textarea>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Requirements</mat-label>
         <textarea matInput formControlName="requirements" rows="3"></textarea>
       </mat-form-field>
@@ -27,14 +22,22 @@
         <input matInput formControlName="companyWebsite" />
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Type of Job</mat-label>
-        <input matInput formControlName="typeOfJob" />
+      <mat-form-field appearance="fill">
+        <mat-label>Job Type</mat-label>
+        <mat-select formControlName="typeOfJob" class="full-width">
+          <mat-option *ngFor="let type of jobTypes" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Location</mat-label>
-        <input matInput formControlName="location" />
+        <mat-select formControlName="location">
+          <mat-option *ngFor="let location of locations" [value]="location">
+            {{ location }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
