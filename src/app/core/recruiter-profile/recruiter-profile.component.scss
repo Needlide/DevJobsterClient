@@ -1,78 +1,56 @@
 .content-body {
-  width: 1100px;
-  height: 680px;
+  width: 95%;
+  max-width: 1100px;
+  min-height: 500px;
+  height: auto;
   background-color: #675c6b;
   border-radius: 15px;
-  margin-top: 80px;
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .info-panel {
-  padding: 0;
+  padding: 15px 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   color: #fff;
   align-items: center;
-  width: 220px;
-  height: 592px;
-  margin-left: 40px;
-  margin-top: 36px;
+  width: 180px;
+  height: auto;
   background-color: #787780;
   border-radius: 15px;
+  margin: 0;
 }
 
 .info-panel > li {
   margin-top: 25px;
+  text-align: center;
+  padding: 0 5px;
 }
 
-.info-panel > li:nth-child(2) {
-  margin-top: 55px;
-}
-
-.info-panel > li:nth-child(3) {
-  margin-top: 55px;
-}
-
-.info-panel > li:nth-child(4) {
-  margin-top: 285px;
-}
-
-.info-panel > li:nth-child(5) {
-  margin-top: 55px;
+.info-panel > li:nth-child(n) {
+  margin-top: 25px;
 }
 
 .action-panel {
   display: flex;
   flex-direction: column;
-  margin-top: 36px;
+  flex: 1;
+  gap: 15px;
 }
 
-.first-name-field {
-  width: 600px;
-  height: 76px;
-}
-
-.last-name-field {
-  width: 600px;
-  height: 76px;
-}
-
-.notes-field {
-  width: 600px;
-  height: 304px;
-}
-
-.website-field {
-  width: 600px;
-  height: 76px;
-}
-
+.first-name-field,
+.last-name-field,
+.notes-field,
+.website-field,
 .phone-number-field {
-  width: 250px;
-  height: 76px;
+  width: 100%;
+  height: auto;
 }
 
 .button-column {
@@ -80,11 +58,67 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  height: 100%;
-  padding-left: 55px;
+  padding-left: 0;
+  margin-bottom: 20px;
 }
 
 .edit-confirm-button {
-  margin-bottom: 20px;
-  margin-right: 20px;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 900px) {
+  .content-body {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .info-panel {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .info-panel > li {
+    margin-top: 0;
+    margin-right: 10px;
+  }
+
+  .action-panel {
+    width: 100%;
+  }
+
+  .button-column {
+    width: 100%;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .edit-confirm-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-body {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .info-panel {
+    padding: 8px;
+  }
+
+  .info-panel > li {
+    font-size: 14px;
+  }
+
+  .action-panel {
+    gap: 10px;
+  }
 }
