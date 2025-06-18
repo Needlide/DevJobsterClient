@@ -121,6 +121,8 @@ export class RecruiterDashboardComponent implements OnInit {
               next: (data) => (this.vacancies = data.data),
             });
 
+            this.selectedVacancy = undefined;
+
             this.snackBar.open('Deleted successfully', 'Close', {
               duration: 5000,
             });
