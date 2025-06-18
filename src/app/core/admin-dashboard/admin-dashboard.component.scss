@@ -4,11 +4,16 @@
   gap: 40px;
   margin-top: 10px;
   height: calc(100vh - 64px);
-  width: 65%;
+  width: 90%;
+  max-width: 1400px;
 }
 
-.left-panel {
+.left-panel,
+.right-panel {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .title-box {
@@ -21,54 +26,75 @@
   margin-bottom: 10px;
 }
 
-.account-list {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  background-color: #ecdcff;
-}
-
-.account-list-item {
-  border-top: 1px solid #b38ddf;
-}
-
-.account-list-item:last-child {
-  border-bottom: 1px solid #b38ddf;
-}
-
-.account-list-item:hover {
-  color: #000;
-  background-color: #b38ddf;
-}
-
-.account-list-text {
-  color: #000;
-}
-
-.right-panel {
-  flex: 1;
-}
-
+.account-list,
 .report-list {
   width: 100%;
   height: 100%;
   border-radius: 15px;
   background-color: #ecdcff;
+  overflow-y: auto;
 }
 
+.account-list-item,
 .report-list-item {
   border-top: 1px solid #b38ddf;
+  word-break: break-word;
 }
 
+.account-list-item:last-child,
 .report-list-item:last-child {
   border-bottom: 1px solid #b38ddf;
 }
 
+.account-list-item:hover,
 .report-list-item:hover {
   color: #000;
   background-color: #b38ddf;
 }
 
+.account-list-text,
 .report-list-text {
   color: #000;
+}
+
+@media (max-width: 1024px) {
+  .content-body {
+    width: 95%;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-body {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .left-panel,
+  .right-panel {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-body {
+    width: 98%;
+    gap: 15px;
+  }
+
+  .title-box {
+    padding: 8px;
+  }
+
+  .title-box h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .left-panel,
+  .right-panel {
+    height: 45vh;
+  }
 }
