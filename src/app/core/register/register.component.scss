@@ -132,3 +132,63 @@
   width: 60px;
   height: 60px;
 }
+
+@media (max-width: 1200px) {
+  .content-body {
+    width: 90%;
+    height: auto;
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    width: 90%;
+    max-width: 370px;
+  }
+
+  .login-form {
+    width: 90%;
+    max-width: 480px;
+  }
+
+  .email-field,
+  .password-field,
+  .login-button,
+  .help-block {
+    width: 80%;
+    max-width: 352px;
+  }
+
+  .login-with-block {
+    width: 90%;
+    max-width: 420px;
+  }
+
+  .login-with-title {
+    width: 90%;
+    max-width: 375px;
+  }
+
+  .help-block {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .email-block,
+  .password-block {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .login-with-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}
