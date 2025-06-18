@@ -4,12 +4,17 @@
   gap: 15px;
   margin-top: 10px;
   height: calc(100vh - 64px);
+  width: 95%;
+  max-width: 1400px;
 }
 
 .left-panel {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 30%;
+  min-width: 280px;
+  max-width: 450px;
 }
 
 .job-list {
@@ -22,6 +27,7 @@
 
 .job-list-item {
   border-top: 1px solid #b38ddf;
+  word-break: break-word;
 }
 
 .job-list-item:last-child {
@@ -30,14 +36,11 @@
 
 .job-list-item:hover {
   color: #000;
+  background-color: #b38ddf;
 }
 
 .job-list-text {
   color: #000;
-}
-
-.job-list-item:hover {
-  background-color: #b38ddf;
 }
 
 .selected {
@@ -58,10 +61,10 @@
   background-color: #675c6b;
   color: #f5f5f5;
   border-radius: 15px 15px 0px 0px;
+}
 
-  mat-icon {
-    margin-right: 8px;
-  }
+.filter-header mat-icon {
+  margin-right: 8px;
 }
 
 .filter-content {
@@ -72,39 +75,29 @@
 }
 
 .search-field {
-  width: 426px;
-  height: 56px;
-  margin-bottom: 36px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
   border-radius: 28px;
 }
 
 .filter-row {
   display: flex;
   flex-direction: row;
-  gap: 26px;
-  margin-bottom: 26px;
-}
-
-.filter-experience-level {
-  width: 200px;
-  height: 56px;
-  border-radius: 7px;
-  background-color: #ceb0b0;
-
-  mat-label {
-    color: #000;
-  }
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .filter-job-type {
-  width: 200px;
+  flex: 1;
   height: 56px;
   border-radius: 7px;
   background-color: #ceb0b0;
+}
 
-  mat-label {
-    color: #000;
-  }
+.filter-job-type mat-label {
+  color: #000;
 }
 
 .filter-location {
@@ -112,40 +105,23 @@
   height: 56px;
   border-radius: 7px;
   background-color: #ceb0b0;
-  margin-bottom: 36px;
-
-  mat-label {
-    color: #000;
-  }
+  margin-bottom: 20px;
 }
 
-.salary-range {
-  p {
-    margin-bottom: 16px;
-    font-weight: 500;
-    color: #fff;
-  }
-
-  .salary-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 4px;
-
-    input {
-      border-radius: 7px;
-    }
-  }
+.filter-location mat-label {
+  color: #000;
 }
 
 .right-panel {
   height: 100%;
-  width: 945px;
+  flex: 1;
   overflow-y: auto;
   background-color: #787780;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
+  min-width: 0;
 }
 
 .right-panel-upper-box {
@@ -153,29 +129,35 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 880px;
+  width: 95%;
   border-radius: 15px;
   background-color: #f1f1f1;
+  padding: 15px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .title-box {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 10px;
+  min-width: 0;
 }
 
 .short-info {
   width: fit-content;
-  height: 32px;
+  height: auto;
+  min-height: 32px;
   border-radius: 15px;
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  gap: 17px;
+  flex-wrap: wrap;
+  gap: 10px;
   background-color: #fff;
-  padding: 0 10px;
+  padding: 5px 10px;
   margin: 0px;
   align-items: center;
   justify-content: flex-start;
@@ -198,8 +180,9 @@
 .right-panel-lower-box {
   background-color: #f1f1f1;
   border-radius: 15px;
-  width: 880px;
-  padding-bottom: 20px;
+  width: 95%;
+  padding: 20px;
+  word-break: break-word;
 }
 
 .description {
@@ -217,22 +200,123 @@ h3 {
 ul {
   padding-left: 24px;
   margin-bottom: 24px;
+}
 
-  li {
-    margin-bottom: 8px;
-  }
+ul li {
+  margin-bottom: 8px;
 }
 
 .card-actions {
   padding: 0px 16px;
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 
-  button {
-    margin-left: auto;
-    margin-right: 20px;
-  }
+.card-actions button {
+  margin-right: 20px;
 }
 
 .full-width {
   width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .content-body {
+    width: 98%;
+  }
+
+  .left-panel {
+    width: 35%;
+    min-width: 250px;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .right-panel-upper-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .apply-button-top {
+    align-self: flex-end;
+    margin-top: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-body {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 64px);
+  }
+
+  .left-panel {
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  .job-list {
+    max-height: 300px;
+  }
+
+  .right-panel {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+  }
+
+  .right-panel-upper-box,
+  .right-panel-lower-box {
+    width: 95%;
+  }
+
+  .apply-button-top {
+    display: none;
+  }
+
+  .card-actions {
+    justify-content: center;
+  }
+
+  .card-actions button {
+    width: 90%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-content {
+    padding: 10px;
+  }
+
+  .search-field {
+    margin-bottom: 15px;
+  }
+
+  .filter-job-type,
+  .filter-location {
+    height: 50px;
+  }
+
+  .right-panel-upper-box {
+    padding: 10px;
+  }
+
+  .right-panel-lower-box {
+    padding: 15px;
+  }
+
+  .title-box {
+    gap: 10px;
+  }
+
+  .short-info {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
