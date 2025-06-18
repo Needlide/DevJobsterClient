@@ -52,6 +52,9 @@ export class RecruiterDashboardComponent implements OnInit {
   add(): void {
     const dialogRef = this.dialog.open(AddVacancyDialogComponent, {
       width: '600px',
+      maxWidth: '95vw',
+      maxHeight: '90vh',
+      autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((result: AddVacancy | undefined) => {
