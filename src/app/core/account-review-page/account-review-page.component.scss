@@ -1,15 +1,18 @@
 .content-body {
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   margin-top: 30px;
   background-color: #675c6b;
   padding: 20px;
   border-radius: 15px;
+  box-sizing: border-box;
 }
 
 .user-card {
   background-color: #ceb0b0;
-  max-width: 800px;
+  width: 100%;
   padding: 16px;
+  box-sizing: border-box;
 }
 
 .user-details {
@@ -17,6 +20,7 @@
   padding: 10px;
   border-radius: 15px;
   margin-top: 15px;
+  word-break: break-word;
 }
 
 .user-details p {
@@ -35,6 +39,7 @@
   display: flex;
   gap: 16px;
   margin-top: 24px;
+  flex-wrap: wrap;
 }
 
 .decline-form {
@@ -46,10 +51,44 @@
 }
 
 .error-card {
+  width: 100%;
   max-width: 600px;
   margin: 40px auto;
   background-color: #ffebee;
   color: #b71c1c;
   padding: 16px;
   text-align: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .content-body {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-body {
+    width: 95%;
+    padding: 10px;
+    margin-top: 15px;
+  }
+
+  .user-card {
+    padding: 10px;
+  }
+
+  .user-details {
+    padding: 8px;
+  }
 }
