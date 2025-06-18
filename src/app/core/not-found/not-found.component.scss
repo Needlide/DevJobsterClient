@@ -6,6 +6,7 @@
   height: 100vh;
   text-align: center;
   background-color: #b38ddf;
+  padding: 0 20px;
 }
 
 .not-found-icon {
@@ -26,4 +27,32 @@ p {
   margin: 0 0 24px 0;
   font-size: 18px;
   color: #212121;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+
+p {
+  margin: 0 0 24px 0;
+  font-size: 18px;
+  color: #212121;
+}
+
+@media (max-width: 480px) {
+  .not-found-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
