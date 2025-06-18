@@ -4,6 +4,8 @@
   padding: 20px;
   color: #212121;
   font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h2[mat-dialog-title] {
@@ -12,14 +14,16 @@ h2[mat-dialog-title] {
   color: #212121;
   margin-bottom: 10px;
   text-align: center;
+  word-break: break-word;
 }
 
 mat-dialog-content {
-  max-height: 400px;
+  max-height: 60vh;
   overflow: auto;
   padding-right: 10px;
   line-height: 1.6;
   color: #212121;
+  word-break: break-word;
 }
 
 mat-dialog-content p {
@@ -35,6 +39,7 @@ mat-dialog-actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 button[mat-button],
@@ -56,4 +61,35 @@ a[mat-button] {
 
 a[mat-button]:hover {
   background-color: #a67cd6;
+}
+
+@media (max-width: 600px) {
+  .mat-dialog-container {
+    padding: 15px;
+  }
+
+  h2[mat-dialog-title] {
+    font-size: 18px;
+  }
+
+  mat-dialog-content {
+    padding-right: 5px;
+    max-height: 70vh;
+  }
+
+  mat-dialog-actions {
+    padding-top: 10px;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  button[mat-button],
+  a[mat-button] {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center;
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
 }

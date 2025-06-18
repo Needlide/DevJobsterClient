@@ -31,7 +31,10 @@ export class AppliedJobsComponent implements OnInit {
   openVacancyDetails(vacancy: VacancyView): void {
     this.dialog.open(VacancyDetailsDialogComponent, {
       width: '600px',
+      maxWidth: '95vw',
+      maxHeight: '90vh',
       data: vacancy,
+      autoFocus: false,
     });
   }
 }
