@@ -6,7 +6,9 @@
   background-color: #675c6b;
   border-radius: 15px;
   padding: 10px;
-  width: 1350px;
+  width: 95%;
+  max-width: 1350px;
+  box-sizing: border-box;
 }
 
 .left-panel {
@@ -14,10 +16,10 @@
   flex-direction: column;
   gap: 15px;
   flex: 1;
+  min-width: 0;
 }
 
 .title-box {
-  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -26,15 +28,20 @@
   color: #212121;
   padding: 10px 20px;
   border-radius: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .vacancy-list {
   border-radius: 15px;
   background-color: #ecdcff;
+  overflow-y: auto;
+  max-height: 70vh;
 }
 
 .vacancy-list-item {
   border-top: 1px solid #b38ddf;
+  word-break: break-word;
 }
 
 .vacancy-list-item:last-child {
@@ -55,19 +62,20 @@
 }
 
 .right-panel {
-  height: 100%;
+  height: auto;
   flex: 2;
   overflow-y: auto;
   background-color: #787780;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
   padding: 20px;
+  min-width: 0;
 }
 
 .right-panel-upper-box {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -81,21 +89,23 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 10px;
   padding: 10px;
 }
 
 .short-info {
   width: fit-content;
-  height: 32px;
+  height: auto;
+  min-height: 32px;
   border-radius: 15px;
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  gap: 17px;
+  flex-wrap: wrap;
+  gap: 10px;
   background-color: #fff;
-  padding: 0 10px;
+  padding: 5px 10px;
   margin: 0px;
   align-items: center;
   justify-content: flex-start;
@@ -114,6 +124,7 @@
   border-radius: 15px;
   width: 100%;
   padding: 20px;
+  word-break: break-word;
 }
 
 .description {
@@ -131,18 +142,87 @@ h3 {
 ul {
   padding-left: 24px;
   margin-bottom: 24px;
+}
 
-  li {
-    margin-bottom: 8px;
-  }
+ul li {
+  margin-bottom: 8px;
 }
 
 .card-actions {
   padding: 0px 16px;
-  width: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
 
-  button {
-    margin-left: auto;
-    margin-right: 20px;
+.card-actions button {
+  margin: 5px;
+}
+
+@media (max-width: 1024px) {
+  .content-body {
+    width: 98%;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+
+  .vacancy-list {
+    max-height: 300px;
+  }
+
+  .right-panel {
+    padding: 15px;
+  }
+
+  .right-panel-upper-box,
+  .right-panel-lower-box {
+    padding: 15px;
+  }
+
+  .title-box {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .card-actions button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title-box h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .short-info {
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
   }
 }
