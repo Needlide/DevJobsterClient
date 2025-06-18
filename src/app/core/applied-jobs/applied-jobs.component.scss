@@ -1,9 +1,11 @@
 .content-body {
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   background-color: #675c6b;
   border-radius: 15px;
   margin-top: 40px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .title-container {
@@ -12,9 +14,69 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .vacancy-card {
   margin-top: 15px;
   background-color: #787780;
+  width: 100%;
+}
+
+::ng-deep .mat-card-title {
+  word-break: break-word;
+}
+
+::ng-deep .mat-card-subtitle {
+  word-break: break-word;
+}
+
+::ng-deep .mat-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.no-vacancies {
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+@media (max-width: 840px) {
+  .content-body {
+    width: 95%;
+    padding: 15px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-body {
+    width: 98%;
+    padding: 12px;
+    margin-top: 20px;
+  }
+
+  .title-container {
+    padding: 8px;
+  }
+
+  .title-container h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  ::ng-deep .mat-card-actions {
+    flex-direction: column;
+  }
+
+  ::ng-deep .mat-card-actions button,
+  ::ng-deep .mat-card-actions a {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center;
+  }
 }
