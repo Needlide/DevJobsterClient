@@ -5,7 +5,7 @@
       <mat-list class="job-list">
         <mat-list-item
           class="job-list-item"
-          *ngFor="let vacancy of filteredVacancies"
+          *ngFor="let vacancy of vacancies"
           [class.selected]="vacancy === selectedVacancy"
           (click)="onVacancySelect(vacancy)"
         >
@@ -36,21 +36,6 @@
           </mat-form-field>
 
           <div class="filter-row">
-            <mat-form-field
-              class="filter-experience-level"
-              appearance="outline"
-            >
-              <mat-label>Experience Level</mat-label>
-              <mat-select [(ngModel)]="filters.experienceLevel">
-                <mat-option
-                  *ngFor="let level of experienceLevels"
-                  [value]="level"
-                >
-                  {{ level }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
             <mat-form-field class="filter-job-type" appearance="outline">
               <mat-label>Job Type</mat-label>
               <mat-select [(ngModel)]="filters.jobType">
@@ -69,45 +54,6 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-
-          <div class="salary-range">
-            <p>Salary Range ($)</p>
-            <mat-slider min="0" max="200000" step="50" class="full-width">
-              <input
-                matSliderStartThumb
-                [(ngModel)]="salaryRange[0]"
-                [min]="minSalary"
-                [max]="maxSalary"
-              />
-              <input
-                matSliderEndThumb
-                [(ngModel)]="salaryRange[1]"
-                [min]="minSalary"
-                [max]="maxSalary"
-              />
-            </mat-slider>
-
-            <div class="salary-labels">
-              <input
-                matInput
-                type="number"
-                step="50"
-                [(ngModel)]="salaryRange[0]"
-                [min]="minSalary"
-                [max]="salaryRange[1]"
-                (ngModelChange)="onSalaryInputChange(0)"
-              />
-              <input
-                matInput
-                type="number"
-                step="50"
-                [(ngModel)]="salaryRange[1]"
-                [min]="salaryRange[0]"
-                [max]="maxSalary"
-                (ngModelChange)="onSalaryInputChange(1)"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </div>

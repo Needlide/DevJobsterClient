@@ -20,6 +20,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { VacancyService } from '../data-services/vacancy.service';
 import { ApplicationService } from '../data-services/application.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -35,6 +36,7 @@ import { ApplicationService } from '../data-services/application.service';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.scss',
@@ -64,7 +66,8 @@ import { ApplicationService } from '../data-services/application.service';
 export class UserDashboardComponent implements OnInit {
   constructor(
     private vacancyService: VacancyService,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -74,41 +77,46 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
-  filters = {
-    title: '',
-    experienceLevel: '',
-    jobType: '',
-    location: '',
-    salaryMin: 0,
-    salaryMax: 200000,
-  };
-
   isExpanded: boolean = false;
   vacancies: VacancyView[] = [];
   selectedVacancy: VacancyView | undefined;
-  experienceLevels: string[] = ['Entry Level', 'Mid Level', 'Senior', 'Lead'];
   jobTypes: string[] = ['Full-time', 'Part-time', 'Contract', 'Freelance'];
   locations: string[] = ['Remote', 'Office', 'Hybrid'];
 
-  minSalary = 0;
-  maxSalary = 999999;
-  salaryRange = [0, 200000];
+  filters = {
+    title: '',
+    jobType: this.jobTypes[0],
+    location: this.locations[0],
+  };
 
   onVacancySelect(vacancy: VacancyView): void {
     this.selectedVacancy = vacancy;
   }
 
-  onSalaryInputChange(index: number) {
-    if (index === 0 && this.salaryRange[0] > this.salaryRange[1]) {
-      this.salaryRange[0] = this.salaryRange[1];
-    } else if (index === 1 && this.salaryRange[1] < this.salaryRange[0]) {
-      this.salaryRange[1] = this.salaryRange[0];
-    }
-  }
-
   apply(): void {
-    if (this.selectedVacancy)
-      this.applicationService.createApplication(this.selectedVacancy.vacancyId);
+    console.log(this.selectedVacancy);
+    if (this.selectedVacancy) {
+      this.applicationService
+        .createApplication(this.selectedVacancy.vacancyId)
+        .subscribe({
+          next: (response) => {
+            this.snackBar.open('Application submitted successfully!', 'Close', {
+              duration: 3000,
+              panelClass: ['success-snackbar'],
+            });
+          },
+          error: (err) => {
+            this.snackBar.open(
+              'Error submitting application. Please try again.',
+              'Close',
+              {
+                duration: 5000,
+                panelClass: ['error-snackbar'],
+              }
+            );
+          },
+        });
+    }
   }
 
   toggleFilter(): void {
