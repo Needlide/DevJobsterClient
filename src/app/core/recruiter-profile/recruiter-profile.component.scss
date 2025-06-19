@@ -75,17 +75,7 @@
   }
 
   .info-panel {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .info-panel > li {
-    margin-top: 0;
-    margin-right: 10px;
+    display: none;
   }
 
   .action-panel {
