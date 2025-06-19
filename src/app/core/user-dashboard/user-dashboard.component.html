@@ -5,7 +5,7 @@
       <mat-list class="job-list">
         <mat-list-item
           class="job-list-item"
-          *ngFor="let vacancy of vacancies"
+          *ngFor="let vacancy of filteredVacancies"
           [class.selected]="vacancy === selectedVacancy"
           (click)="onVacancySelect(vacancy)"
         >
@@ -14,6 +14,7 @@
           </span>
         </mat-list-item>
       </mat-list>
+
       <div class="filter-container">
         <div class="filter-header" (click)="toggleFilter()">
           <mat-icon>{{
@@ -39,6 +40,7 @@
             <mat-form-field class="filter-job-type" appearance="outline">
               <mat-label>Job Type</mat-label>
               <mat-select [(ngModel)]="filters.jobType">
+                <mat-option [value]="">All</mat-option>
                 <mat-option *ngFor="let type of jobTypes" [value]="type">
                   {{ type }}
                 </mat-option>
@@ -49,6 +51,7 @@
           <mat-form-field appearance="outline" class="filter-location">
             <mat-label>Location</mat-label>
             <mat-select [(ngModel)]="filters.location">
+              <mat-option [value]="">All</mat-option>
               <mat-option *ngFor="let location of locations" [value]="location">
                 {{ location }}
               </mat-option>

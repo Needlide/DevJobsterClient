@@ -72,6 +72,96 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.vacancyService.getAllVacancies().subscribe({
+      next: (data) => {
+        this.vacancies = data.data;
+        if (this.filteredVacancies.length > 0 && !this.selectedVacancy) {
+          this.selectedVacancy = this.filteredVacancies[0];
+        }
+      },
+      error: (error) => console.error(error),
+    });
+  }
+
+  isExpanded: boolean = false;
+  vacancies: VacancyView[] = [];
+  selectedVacancy: VacancyView | undefined;
+  jobTypes: string[] = ['Full-time', 'Part-time', 'Contract', 'Freelance'];
+  locations: string[] = ['Remote', 'Office', 'Hybrid'];
+
+  filters = {
+    title: '',
+    jobType: '',
+    location: '',
+  };
+
+  onVacancySelect(vacancy: VacancyView): void {
+    this.selectedVacancy = vacancy;
+  }
+
+  apply(): void {
+    console.log(this.selectedVacancy);
+    if (this.selectedVacancy) {
+      this.applicationService
+        .createApplication(this.selectedVacancy.vacancyId)
+        .subscribe({
+          next: (response) => {
+            this.snackBar.open('Application submitted successfully!', 'Close', {
+              duration: 3000,
+              panelClass: ['success-snackbar'],
+            });
+          },
+          error: (err) => {
+            this.snackBar.open(
+              'Error submitting application. Please try again.',
+              'Close',
+              {
+                duration: 5000,
+                panelClass: ['error-snackbar'],
+              }
+            );
+          },
+        });
+    }
+  }
+
+  toggleFilter(): void {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  get filteredVacancies(): VacancyView[] {
+    const filtered = this.vacancies.filter((v) => {
+      const matchesTitle = v.title
+        .toLowerCase()
+        .includes(this.filters.title.toLowerCase());
+      const matchesJobType =
+        !this.filters.jobType || v.typeOfJob === this.filters.jobType;
+      const matchesLocation =
+        !this.filters.location || v.location === this.filters.location;
+
+      return matchesTitle && matchesJobType && matchesLocation;
+    });
+
+    if (
+      filtered.length > 0 &&
+      this.selectedVacancy &&
+      !filtered.some((v) => v.vacancyId === this.selectedVacancy?.vacancyId)
+    ) {
+      this.selectedVacancy = filtered[0];
+    }
+
+    return filtered;
+  }
+}
+
+/*export class UserDashboardComponent implements OnInit {
+  constructor(
+    private vacancyService: VacancyService,
+    private applicationService: ApplicationService,
+    private snackBar: MatSnackBar
+  ) {}
+
+  ngOnInit(): void {
+    this.vacancyService.getAllVacancies().subscribe({
       next: (data) => (this.vacancies = data.data),
       error: (error) => console.error(error),
     });
@@ -136,4 +226,4 @@ export class UserDashboardComponent implements OnInit {
       return matchesTitle && matchesJobType && matchesLocation;
     });
   }
-}
+}*/
