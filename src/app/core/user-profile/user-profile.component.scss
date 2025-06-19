@@ -19,7 +19,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 70px;
   color: #fff;
   align-items: center;
   width: 180px;
@@ -30,7 +30,7 @@
 }
 
 .info-panel > li:first-child {
-  margin-top: 17px;
+  margin-top: 25px;
 }
 
 .action-panel {
@@ -89,7 +89,6 @@
   margin-right: 0;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 900px) {
   .content-body {
     flex-direction: column;
@@ -99,16 +98,7 @@
   }
 
   .info-panel {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 15px;
-    padding: 10px;
-  }
-
-  .info-panel > li:first-child {
-    margin-top: 0;
+    display: none;
   }
 
   .action-panel {
