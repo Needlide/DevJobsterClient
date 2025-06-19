@@ -231,6 +231,15 @@ ul li {
     min-width: 250px;
   }
 
+  .filter-container {
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+
+  .filter-header {
+    border-radius: 15px;
+  }
+
   .filter-row {
     flex-direction: column;
     gap: 10px;
@@ -258,6 +267,7 @@ ul li {
     width: 100%;
     max-width: none;
     height: auto;
+    flex-direction: column-reverse;
   }
 
   .job-list {
